@@ -53,9 +53,27 @@ export default function HomePage() {
 
     return (
         <div className = "formLogin">
-            <input type="text" id = "gg" placeholder="username" onChange={handleUsername}/>
-            <input type="password" placeholder="password" onChange={handlePassword}/>
-            <button onClick={submit}>login</button>
+            <div className = "wrapper">
+                <div className = "form-box-login">
+                    <h2>Login</h2>
+                    <form onSubmit={submit}>
+                    <div className = "input-box">
+                    <input type="text"
+                    required
+                    onChange={handleUsername}/>
+                    <label>Username</label>
+                    </div>
+                    <div className = "input-box">
+                    <input 
+                    type="password" 
+                    required
+                    onChange={handlePassword}/>
+                    <label>Password</label>
+                    </div>
+                    <button type = "submit" className = "btn">Login</button>
+                    </form>
+                    </div>
+            </div>
         </div>
     )
 
