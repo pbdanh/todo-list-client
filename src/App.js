@@ -7,6 +7,7 @@ import { Routes } from 'react-router-dom';
 
 import HomePage from './components/HomePage/HomePage';
 import Content from './components/Content/Content';
+import { Register } from './components/Register/Register';
 
 function Test() {
   return (
@@ -40,6 +41,7 @@ function App() {
             <Route path='/content' element={<Content />}>
               
             </Route>
+            <Route path='/register' element={<Register />}></Route>
         </Routes>
       </BrowserRouter>
       
