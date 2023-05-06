@@ -76,6 +76,13 @@ export default function Content() {
     axios.delete("http://localhost:8080/api/taskGroup", config);
     setData((data) => data.filter((taskGroup) => taskGroup.id != id));
   }
+  function showTask() {
+    console.log("123");
+    axios.get("http://localhost:8080/api/tasks")
+    .then(res => {
+      console.log("res.data");
+    })
+  }
 
   useEffect(() => {
     getData();
@@ -97,7 +104,7 @@ export default function Content() {
         <ul>
           {data.map((taskList) => (
             <div className="task-with-icon">
-              <li>{taskList.name} </li>
+              <li onClick = {showTask}>{taskList.name} </li>
               <button
                 onClick={() => {
                   deleteTaskGroup(taskList.id);
@@ -124,11 +131,12 @@ export default function Content() {
           </button>
         </div>
       </div>
-      {/* <div className="task-show">
+      <div className="task-show">
             <div className="task-group-name">
               <h1>saldkfjkdjs</h1>
             </div>
             <ul>
+              <div className="task-holder"></div>
               <li className="task">sdlakfjksdfj</li>
               <li className="task">sdlakfjksdfj</li>
               <li className="task">sdlakfjksdfj</li>
@@ -138,7 +146,7 @@ export default function Content() {
               <li className="task">sdlakfjksdfj</li>
             </ul>
             <input type="text" className="add-task" placeholder="add new task" />
-      </div> */}
+      </div>
     </div>
   );
 }

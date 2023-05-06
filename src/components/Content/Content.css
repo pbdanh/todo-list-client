@@ -116,11 +116,19 @@ div.task-with-icon:hover {
   cursor: pointer;
 }
 
+
 .task-show {
+  width: 100%;
   background-color: red;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.task-holder li {
+  padding-left: 17px;
+  list-style: none;
+  width: 100%;
 }
 
 .add-task {
