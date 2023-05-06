@@ -23,7 +23,7 @@ export default function Content() {
   function getData() {
     console.log(`Bearer ${window.localStorage.getItem("token")}`);
     axios
-      .get("http://localhost:8080/api/taskList", {
+      .get("http://localhost:8080/api/taskGroup", {
         headers: {
           Authorization: `Bearer ${window.localStorage.getItem("token")}`,
         },
@@ -46,7 +46,7 @@ export default function Content() {
       name: newTaskGroup,
     };
     axios
-      .post("http://localhost:8080/api/taskList", newTaskGroupData, {
+      .post("http://localhost:8080/api/taskGroup", newTaskGroupData, {
         headers: {
           Authorization: `Bearer ${window.localStorage.getItem("token")}`,
         },
@@ -73,7 +73,7 @@ export default function Content() {
     };
 
     console.log(id);
-    axios.delete("http://localhost:8080/api/taskList", config);
+    axios.delete("http://localhost:8080/api/taskGroup", config);
     setData((data) => data.filter((taskGroup) => taskGroup.id != id));
   }
 

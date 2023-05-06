@@ -9,7 +9,6 @@
 }
 
 .content-wrapper {
-  /* background-color: red; */
   backdrop-filter: blur(20px);
   width: 27%;
   height: 100vh;
@@ -20,12 +19,6 @@
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 7px;
 }
-
-.content-wrapper button {
-  /* width: 100px; */
-}
-
-
 
 .content-wrapper ul {
   margin: 0;
@@ -43,7 +36,8 @@
 }
 
 .btn-log-out {
-  height: 30px;
+  height:50%;
+  width: 30%;
   background: #162938;
   border: none;
   outline: none;
@@ -53,12 +47,10 @@
   color: #fff;
 }
 .search-bar {
-  /* background-color: blue; */
   width: 250px;
   height: 25px;
   margin-top: 20px;
 }
-
 
 .add-new-task {
   display: flex;
@@ -66,12 +58,10 @@
   position: absolute;
   bottom: 10px;
   justify-content: space-between;
-  
 }
 
 .input-task {
   border-bottom: 2px solid #162938;
-  
 }
 
 .add-task-button {
@@ -81,15 +71,11 @@
   background: transparent;
   border: none;
   outline: none;
-  /* border-radius: 6px; */
-  /* border: 1px solid black; */
   cursor: pointer;
   font-size: 1em;
-  
 }
 
 .add-new-task input {
-  
   width: 100%;
   height: 100%;
   background: transparent;
@@ -98,34 +84,25 @@
   font-size: 1em;
   color: #162938;
   font-weight: 600;
-  padding: 0 35px 0 5px; 
+  padding: 0 35px 0 5px;
 }
 
 .task-with-icon {
   display: flex;
-  /* border: 1px solid black; */
   align-items: center;
   flex-direction: row;
   height: 45px;
 }
 
 div.task-with-icon:hover {
-  /* border: 1px solid black; */
   background-color: rgba(255, 255, 255, 0.1);
   cursor: pointer;
 }
 
-
 .task-with-icon li {
-  /* border: 1px solid red; */
-  /* box-sizing: border-box; */
   padding-left: 17px;
- 
   list-style: none;
   width: 100%;
-  /* height: 50px; */
- 
-  /* box-sizing: border-box; */
 }
 
 .task-with-icon button {
@@ -139,19 +116,13 @@ div.task-with-icon:hover {
   cursor: pointer;
 }
 
-
-
-
 .task-show {
   background-color: red;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  
 }
 
 .add-task {
   margin-top: 100px;
 }
-
-
