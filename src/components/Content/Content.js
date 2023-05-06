@@ -4,15 +4,20 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Content.css";
 import SearchBar from "./SearchBar.js";
-import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-// import AddIcon from '@mui/icons-material/Add';
 import AddIcon from "@mui/icons-material/Add";
+import SendIcon from "@mui/icons-material/Send";
 export default function Content() {
   const [data, setData] = useState([]);
   const [newTaskGroup, setNewTaskGroup] = useState("");
-
+  const [currentTaskGroup, setCurrentTaskGroup] = useState({
+    id: "0",
+    name: "",
+  });
+  const [taskName, setTaskName] = useState("");
+  const [todo, setTodo] = useState([]);
+  const [user, setUser] = useState("");
   const navigation = useNavigate();
 
   function logout() {
@@ -76,23 +81,76 @@ export default function Content() {
     axios.delete("http://localhost:8080/api/taskGroup", config);
     setData((data) => data.filter((taskGroup) => taskGroup.id != id));
   }
-  function showTask() {
-    console.log("123");
-    axios.get("http://localhost:8080/api/tasks")
-    .then(res => {
-      console.log("res.data");
-    })
+  function showTask(name, id) {
+    // console.log(name);
+    // console.log(id);
+
+    let taskGroup = {
+      name: name,
+      id: id,
+    };
+    setCurrentTaskGroup(taskGroup);
+
+    let config = {
+      headers: {
+        Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+      },
+
+      params: {
+        taskGroupId: id,
+      },
+    };
+
+    axios.get("http://localhost:8080/api/tasks", config).then((res) => {
+      // console.log(res.data);
+      setTodo(res.data);
+    });
+  }
+
+  function createNewTask() {
+    const task = {
+      title: taskName,
+      taskGroupId: currentTaskGroup.id,
+    };
+    axios
+      .post("http://localhost:8080/api/task", task, {
+        headers: {
+          Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        // setData((oldData) => [...oldData, res.data]);
+        document.getElementById("cde").value = "";
+        // setData(data.push(res.data));
+        setTaskName("");
+        setTodo((oldData) => [...oldData, res.data]);
+      });
   }
 
   useEffect(() => {
     getData();
-  }, []);
+    axios
+      .get("http://localhost:8080/api/user", {
+        headers: {
+          Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+        },
+      })
+      .then((res) => {
+        setUser(res.data.firstname + " " + res.data.lastname);
+        console.log(res.data);
+      })
+      .catch((error) => {
+        navigation("/");
+      });
+  }
+  , []);
 
   return (
     <div className="todoapp-work">
       <div className="content-wrapper">
         <div className="userInfo">
-          <p>Pham Ba Danh</p>
+          <p>Hello {user}</p>
           <button className="btn-log-out" onClick={logout}>
             Logout
           </button>
@@ -104,7 +162,13 @@ export default function Content() {
         <ul>
           {data.map((taskList) => (
             <div className="task-with-icon">
-              <li onClick = {showTask}>{taskList.name} </li>
+              <li
+                onClick={() => {
+                  showTask(taskList.name, taskList.id);
+                }}
+              >
+                {taskList.name}{" "}
+              </li>
               <button
                 onClick={() => {
                   deleteTaskGroup(taskList.id);
@@ -132,20 +196,30 @@ export default function Content() {
         </div>
       </div>
       <div className="task-show">
-            <div className="task-group-name">
-              <h1>saldkfjkdjs</h1>
+        <div className="task-group-name">
+            <h1>{currentTaskGroup.name}</h1>
+        </div>
+        <ul>
+          {todo.map((taskList) => (
+            <div className="todo-list-li">
+              <li>{taskList.title} </li>
             </div>
-            <ul>
-              <div className="task-holder"></div>
-              <li className="task">sdlakfjksdfj</li>
-              <li className="task">sdlakfjksdfj</li>
-              <li className="task">sdlakfjksdfj</li>
-              <li className="task">sdlakfjksdfj</li>
-              <li className="task">sdlakfjksdfj</li>
-              <li className="task">sdlakfjksdfj</li>
-              <li className="task">sdlakfjksdfj</li>
-            </ul>
-            <input type="text" className="add-task" placeholder="add new task" />
+          ))}
+        </ul>
+        <div className="add-a-new-task">
+          <input
+            type="text"
+            id="cde"
+            placeholder="New task"
+            onChange={(event) => {
+              setTaskName(event.target.value);
+              // console.log(taskName);
+            }}
+          />
+          <button className="create-new-task-btn" onClick={createNewTask}>
+            <SendIcon />
+          </button>
+        </div>
       </div>
     </div>
   );
