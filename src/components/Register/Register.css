@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: url('C:/Users/nhand/Documents/todo-full-stack-app/frontend/src/assets/background.jpg') no-repeat;
+    background: url('/src/asset/background.jpg') no-repeat;
     background-size: cover;
     background-position: center;
 }
