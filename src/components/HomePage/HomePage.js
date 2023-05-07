@@ -83,8 +83,8 @@ export default function HomePage() {
                     <div className = "error-msg">
                         <p>{errorLogin}</p>
                     </div>
-                    <div class = "login-register"><p>Don't have an account? 
-                    <a href = "/register" class = "register-link">Register</a>
+                    <div className = "login-register"><p>Don't have an account? 
+                    <a href = "/register" className = "register-link">Register</a>
                     </p></div>
                     </form>
                     </div>

@@ -5,12 +5,11 @@ import { useNavigate } from "react-router-dom";
 import "./Content.css";
 import SearchBar from "./SearchBar.js";
 import DeleteIcon from "@mui/icons-material/Delete";
-import EditIcon from "@mui/icons-material/Edit";
-import AddIcon from "@mui/icons-material/Add";
 import SendIcon from "@mui/icons-material/Send";
+import NewTaskGroup from "./NewTaskGroup";
+import TaskList from "./TaskList";
 export default function Content() {
   const [data, setData] = useState([]);
-  const [newTaskGroup, setNewTaskGroup] = useState("");
   const [currentTaskGroup, setCurrentTaskGroup] = useState({
     id: "0",
     name: "",
@@ -26,7 +25,6 @@ export default function Content() {
   }
 
   function getData() {
-    console.log(`Bearer ${window.localStorage.getItem("token")}`);
     axios
       .get("http://localhost:8080/api/taskGroup", {
         headers: {
@@ -42,32 +40,7 @@ export default function Content() {
       });
   }
 
-  function handleEnterNewTaskGroupName(e) {
-    setNewTaskGroup(e.target.value);
-  }
-
-  function createTaskGroup() {
-    const newTaskGroupData = {
-      name: newTaskGroup,
-    };
-    axios
-      .post("http://localhost:8080/api/taskGroup", newTaskGroupData, {
-        headers: {
-          Authorization: `Bearer ${window.localStorage.getItem("token")}`,
-        },
-      })
-      .then((res) => {
-        console.log(res.data);
-        setData((oldData) => [...oldData, res.data]);
-        document.getElementById("abc").value = "";
-        // setData(data.push(res.data));
-      });
-    setNewTaskGroup("");
-  }
-
   function deleteTaskGroup(id) {
-    // console.log("falsdkfj");
-
     let config = {
       headers: {
         Authorization: `Bearer ${window.localStorage.getItem("token")}`,
@@ -79,34 +52,26 @@ export default function Content() {
 
     console.log(id);
     axios.delete("http://localhost:8080/api/taskGroup", config);
-    setData((data) => data.filter((taskGroup) => taskGroup.id != id));
+    setData((data) => data.filter((taskGroup) => taskGroup.id !== id));
   }
   function showTask(name, id) {
-    // console.log(name);
-    // console.log(id);
-
     let taskGroup = {
       name: name,
       id: id,
     };
     setCurrentTaskGroup(taskGroup);
-
     let config = {
       headers: {
         Authorization: `Bearer ${window.localStorage.getItem("token")}`,
       },
-
       params: {
         taskGroupId: id,
       },
     };
-
     axios.get("http://localhost:8080/api/tasks", config).then((res) => {
-      // console.log(res.data);
       setTodo(res.data);
     });
   }
-
   function createNewTask() {
     const task = {
       title: taskName,
@@ -120,9 +85,7 @@ export default function Content() {
       })
       .then((res) => {
         console.log(res.data);
-        // setData((oldData) => [...oldData, res.data]);
         document.getElementById("cde").value = "";
-        // setData(data.push(res.data));
         setTaskName("");
         setTodo((oldData) => [...oldData, res.data]);
       });
@@ -143,8 +106,7 @@ export default function Content() {
       .catch((error) => {
         navigation("/");
       });
-  }
-  , []);
+  }, []);
 
   return (
     <div className="todoapp-work">
@@ -181,23 +143,11 @@ export default function Content() {
           ))}
         </ul>
 
-        <div className="add-new-task">
-          <div className="input-task">
-            <input
-              type="text"
-              placeholder="Add a new task"
-              id="abc"
-              onChange={handleEnterNewTaskGroupName}
-            ></input>
-          </div>
-          <button className="add-task-button" onClick={createTaskGroup}>
-            <AddIcon />
-          </button>
-        </div>
+        <NewTaskGroup setData={setData} />
       </div>
       <div className="task-show">
         <div className="task-group-name">
-            <h1>{currentTaskGroup.name}</h1>
+          <h1>{currentTaskGroup.name}</h1>
         </div>
         <ul>
           {todo.map((taskList) => (
@@ -213,7 +163,6 @@ export default function Content() {
             placeholder="New task"
             onChange={(event) => {
               setTaskName(event.target.value);
-              // console.log(taskName);
             }}
           />
           <button className="create-new-task-btn" onClick={createNewTask}>
