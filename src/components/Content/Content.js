@@ -8,16 +8,31 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import SendIcon from "@mui/icons-material/Send";
 import NewTaskGroup from "./NewTaskGroup";
 import TaskList from "./TaskList";
+
+
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+
+
+import { setCurrentTaskGroup } from "../../slice/currentTaskGroupSlice";
+
+
+
+
 export default function Content() {
-  const [data, setData] = useState([]);
-  const [currentTaskGroup, setCurrentTaskGroup] = useState({
-    id: "0",
-    name: "",
-  });
-  const [taskName, setTaskName] = useState("");
-  const [todo, setTodo] = useState([]);
-  const [user, setUser] = useState("");
-  const navigation = useNavigate();
+
+  const dispatch = useDispatch();
+  const currentTaskGroup = useSelector((state) => state.currentTaskGroup);
+
+  const [data, setData] = useState([]); //task_group
+  // const [currentTaskGroup, setCurrentTaskGroup] = useState({
+  //   id: "0",
+  //   name: "",
+  // });
+  const [taskName, setTaskName] = useState(""); //se khong can add new task
+  const [todo, setTodo] = useState([]); //new reducer
+  const [user, setUser] = useState(""); //se khong can
+  const navigation = useNavigate(); //new reducer
 
   function logout() {
     window.localStorage.removeItem("token");
@@ -59,7 +74,10 @@ export default function Content() {
       name: name,
       id: id,
     };
-    setCurrentTaskGroup(taskGroup);
+    // setCurrentTaskGroup(taskGroup);
+    dispatch(setCurrentTaskGroup(taskGroup));
+
+
     let config = {
       headers: {
         Authorization: `Bearer ${window.localStorage.getItem("token")}`,
