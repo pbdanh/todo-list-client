@@ -9,6 +9,11 @@ import HomePage from './components/HomePage/HomePage';
 import Content from './components/Content/Content';
 import { Register } from './components/Register/Register';
 
+//--------TODO: ti xoa
+
+import Redux_Button from './components/TestRedux/button';
+import Redux_Content from './components/TestRedux/content';
+
 function Test() {
   return (
     <h1>Test</h1>
@@ -42,6 +47,16 @@ function App() {
               
             </Route>
             <Route path='/register' element={<Register />}></Route>
+
+
+            <Route path='/test_redux' element={
+              <div>
+                <Redux_Content />
+                <Redux_Button />
+              </div>
+            }>
+
+            </Route>
         </Routes>
       </BrowserRouter>
       
