@@ -18,7 +18,19 @@ export const taskListSlice = createSlice({
       console.log(action.payload);
       state.list = [...state.list, action.payload];
     },
+    Test: (state, action) => {
+      console.log("@@");
+      // let current = state.list.filter((value) => {
+      //   return value.id === action.payload;
+      // })
+      // current.complete = !current.complete;
+      for(let item of state.list) {
+        if(item.id == action.payload) {
+          item.complete = !item.complete;
+        }
+      }
+    },
   },
 });
-export const { SetTaskList, AddNewTask, UpdateTask } = taskListSlice.actions;
+export const { SetTaskList, AddNewTask, Test } = taskListSlice.actions; //TODO : đổi tên cái test
 export default taskListSlice.reducer;
