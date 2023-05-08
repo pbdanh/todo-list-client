@@ -1,14 +1,13 @@
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-
 import "./CurrentTaskList.css";
 import axios from "axios";
-
 import { SwitchCompleteStatusById } from '../../../slice/taskListSlice';
 import { Test } from "../../../slice/taskListSlice";
-
 import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import StarBorderIcon from '@mui/icons-material/StarBorder';
+import StarIcon from '@mui/icons-material/Star';
 
 
 export default function CurrentTaskList() {
@@ -33,7 +32,7 @@ export default function CurrentTaskList() {
     axios.put("http://localhost:8080/api/switchCompleteStatus", data, config);
     dispatch(Test(taskId));
   }
-  
+
   function Abc(props) {
     let content;
     if(props.complete) {
@@ -63,7 +62,10 @@ export default function CurrentTaskList() {
         {taskList.list.map((task) => (
           <div className="todo-list-li">
             <Abc complete = {task.complete} taskId = {task.id} />
-            <li className={task.complete ? 'completed-task' : ''}>{task.title}</li>
+            <li className={task.complete ? 'completed-task' : ''}>{task.title} 
+            <button className="star"><StarIcon/></button>
+            </li>
+            
           </div>
         ))}
       </ul>

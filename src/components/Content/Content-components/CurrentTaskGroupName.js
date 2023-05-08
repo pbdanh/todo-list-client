@@ -9,11 +9,9 @@ import React from "react";
 import axios from "axios";
 
 export default function CurrentTaskGroupName() {
-
   const dispatch = useDispatch();
 
   const currentTaskGroup = useSelector((state) => state.currentTaskGroup);
-  const taskGroupList = useSelector((state) => state.taskGroupList);
 
   function handleOnchangeEvent(e) {
     let payload = { ...currentTaskGroup };
@@ -21,13 +19,10 @@ export default function CurrentTaskGroupName() {
     payload.changeName = true;
     dispatch(setCurrentTaskGroup(payload));
 
-
     const data = {
       id: currentTaskGroup.id,
       name: e.target.value,
     };
-
-    
 
     axios
       .put("http://localhost:8080/api/taskGroup", data, {
@@ -36,15 +31,14 @@ export default function CurrentTaskGroupName() {
         },
       })
       .then((res) => {
-        dispatch(UpdateTaskGroupList(res.data))
+        dispatch(UpdateTaskGroupList(res.data));
       });
-      //thay đổi taskGroupList element id => 
   }
 
   return (
-    <div>
+    <div className = "container-task">
       <input
-        className="taskGroupName"
+        className="task-group-name"
         type="text"
         value={currentTaskGroup.name}
         onChange={handleOnchangeEvent}

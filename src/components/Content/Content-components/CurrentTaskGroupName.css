@@ -1,3 +1,19 @@
-.taskGroupName {
+.container-task {
+  width: 100%;
+  color: whitesmoke;
+  padding-left: 40px;
+  padding-top: 40px;
+}
+
+.task-group-name {
+  box-sizing: border-box;
   color: white;
+  border: none;
+  font-size: 45px;
+  outline: none;
+}
+
+input.task-group-name:focus {
+  border: none;
+  outline: none;
 }

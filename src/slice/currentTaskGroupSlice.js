@@ -1,11 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-// import counterSlice from "./counterSlice";
 
 const initialState = {
   id: 0,
   name: "",
   changeName: false,
-  active: false, //if(active) render taskGroupName, tasks, search
+  active: false,
 };
 
 export const currentTaskGroupSlice = createSlice({
