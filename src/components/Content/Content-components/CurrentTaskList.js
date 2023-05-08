@@ -67,9 +67,6 @@ export default function CurrentTaskList() {
           </div>
         ))}
       </ul>
-      <button onClick={() => {
-        console.log(taskList.list);
-      }}>aaa</button>
     </div>
   );
 }

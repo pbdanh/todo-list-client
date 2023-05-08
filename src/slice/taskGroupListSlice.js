@@ -16,11 +16,13 @@ export const taskGroupListSlice = createSlice({
       state.taskGroup = [...state.taskGroup, action.payload];
     },
     UpdateTaskGroupList: (state, action) => {
-      const updatedTaskGroup = state.find(
-        (group) => group.id === action.payload.id
-      );
-      if (updatedTaskGroup) {
-        Object.assign(updatedTaskGroup, action.payload);
+      console.log("payload: ");
+      console.log(action.payload);
+
+      for(let item of state.taskGroup) {
+        if(item.id == action.payload.id) {
+          item.name = action.payload.name;
+        }
       }
     },
     RemoveTaskGroupList: (state, action) => {
