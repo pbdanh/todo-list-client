@@ -1,0 +1,34 @@
+.add-new-task {
+  display: flex;
+  width: 80%;
+  position: absolute;
+  bottom: 10px;
+  justify-content: space-between;
+}
+
+.input-task {
+  border-bottom: 2px solid #162938;
+}
+
+.add-task-button {
+  box-sizing: border-box;
+  width: 20px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.add-new-task input {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 1em;
+  color: #162938;
+  font-weight: 600;
+  padding: 0 35px 0 5px;
+}

@@ -1,26 +1,19 @@
 import axios from "axios";
 import DeleteIcon from "@mui/icons-material/Delete";
-
-
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
-
 import { setCurrentTaskGroup } from "../../../slice/currentTaskGroupSlice";
 import { SetTaskList } from "../../../slice/taskListSlice";
 import { RemoveTaskGroupList } from "../../../slice/taskGroupListSlice";
 import { SetTaskGroupList } from "../../../slice/taskGroupListSlice";
-
+import "./ShowTaskGroup.css";
 
 export default function ShowTaskGroup() {
-
   const dispatch = useDispatch();
   const navigation = useNavigate();
   const taskGroupList = useSelector((state) => state.taskGroupList);
-
-
   useEffect(() => {
     axios
       .get("http://localhost:8080/api/taskGroup", {
@@ -29,7 +22,7 @@ export default function ShowTaskGroup() {
         },
       })
       .then((res) => {
-        console.log("axios data")
+        console.log("axios data");
         console.log(res.data);
         console.log("state data");
         dispatch(SetTaskGroupList(res.data));
@@ -37,7 +30,6 @@ export default function ShowTaskGroup() {
       .catch((error) => {
         navigation("/");
       });
-   
   }, []);
 
   function showTask(name, id) {
@@ -47,10 +39,7 @@ export default function ShowTaskGroup() {
       changeName: true,
       active: false,
     };
-    // setCurrentTaskGroup(taskGroup);
-    // console.log(taskGroup);
     dispatch(setCurrentTaskGroup(taskGroup));
-
 
     let config = {
       headers: {
@@ -81,7 +70,7 @@ export default function ShowTaskGroup() {
   }
 
   return (
-    <div>
+    <div className="task-group-holder">
       <ul>
         {taskGroupList.taskGroup.map((taskList) => (
           <div className="task-with-icon">
@@ -102,9 +91,7 @@ export default function ShowTaskGroup() {
             </button>
           </div>
         ))}
-
-
       </ul>
     </div>
-  )
+  );
 }

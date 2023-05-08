@@ -1,0 +1,37 @@
+.task-group-holder {
+  padding-left: 12px;
+  list-style: none;
+  width: 100%;
+}
+
+.task-with-icon {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  height: 45px;
+}
+
+div.task-with-icon:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+}
+
+.task-with-icon li {
+  box-sizing: border-box;
+  padding-left: 17px;
+  list-style: none;
+  width: 100%;
+  /* border: solid 2px red; */
+  /* padding-right: 20%; */
+}
+
+.task-with-icon button {
+  background: transparent;
+  border: none;
+  display: inline-block;
+  margin-right: 8px;
+}
+
+.task-with-icon button:hover {
+  cursor: pointer;
+}
