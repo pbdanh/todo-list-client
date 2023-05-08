@@ -26,7 +26,7 @@
 
 .todo-list-li {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   /* border: 1px solid black; */
   background-color: rgba(255, 255, 255, 0.5);
@@ -43,4 +43,12 @@
   list-style: none;
   width: 100%;
   margin: 10px;
+}
+.todo-list-li button {
+  background: transparent;
+  border: none;
+}
+
+.completed-task {
+  text-decoration: line-through;
 }

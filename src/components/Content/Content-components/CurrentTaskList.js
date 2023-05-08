@@ -11,8 +11,6 @@ import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 
-
-
 export default function CurrentTaskList() {
 
   const dispatch = useDispatch();
@@ -65,7 +63,7 @@ export default function CurrentTaskList() {
         {taskList.list.map((task) => (
           <div className="todo-list-li">
             <Abc complete = {task.complete} taskId = {task.id} />
-            <li>{task.title}</li>
+            <li className={task.complete ? 'completed-task' : ''}>{task.title}</li>
           </div>
         ))}
       </ul>
