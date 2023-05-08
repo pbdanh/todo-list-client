@@ -4,6 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     id: 0,
     name: "",
+    changeName: false,
     active: false, //if(active) render taskGroupName, tasks, search
 }
 
@@ -15,7 +16,8 @@ export const currentTaskGroupSlice = createSlice({
         setCurrentTaskGroup: (state, action) => {
             state.id = action.payload.id;
             state.name = action.payload.name;
-            state.active = true;
+            state.changeName = action.payload.changeName;
+            state.active = action.payload.active;
         },
         inactiveCurrentTaskGroup: (state) => {
             state.active = false;

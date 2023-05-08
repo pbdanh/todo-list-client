@@ -1,9 +1,13 @@
 import AddIcon from "@mui/icons-material/Add";
 import axios from "axios";
 import { useState } from "react";
-export default function NewTaskGroup(props) {
-    const{setData} = props;
+import { useSelector, useDispatch } from "react-redux";
+import { AddNewTaskGroup } from "../../../slice/taskGroupListSlice";
+export default function NewTaskGroup() {
+    
     const [newTaskGroup, setNewTaskGroup] = useState("");
+    const dispatch = useDispatch();
+    const taskGroupList = useSelector((state) => state.taskGroupList);
     function handleEnterNewTaskGroupName(e) {
         setNewTaskGroup(e.target.value);
       }
@@ -18,7 +22,10 @@ export default function NewTaskGroup(props) {
             },
           })
           .then((res) => {
-            setData((oldData) => [...oldData, res.data]);
+            console.log("123");
+            console.log(res.data);
+            dispatch(AddNewTaskGroup(res.data))
+            console.log(res.data);
             document.getElementById("abc").value = "";
           });
         setNewTaskGroup("");
