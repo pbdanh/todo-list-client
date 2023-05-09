@@ -5,6 +5,9 @@ import ShowTaskGroup from "./Content-components/ShowTaskGroup";
 import UserInfo from "./Content-components/UserInfo";
 import CurrentTaskList from "./Content-components/CurrentTaskList";
 import CreateNewTask from "./Content-components/CreateNewTask";
+import CurrentTaskName from "./Content-components/CurrentTaskName";
+import CurrenTaskDetail from "./Content-components/CurrentTaskDetail";
+import DeleteTask from "./Content-components/DeleteTask";
 import "./Content.css";
 
 export default function Content() {
@@ -20,6 +23,11 @@ export default function Content() {
         <CurrentTaskGroupName />
         <CurrentTaskList />
         <CreateNewTask />
+      </div>
+      <div className="current-task-detail">
+        <CurrentTaskName />
+        <CurrenTaskDetail />
+        <DeleteTask />
       </div>
     </div>
   );

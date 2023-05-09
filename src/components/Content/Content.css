@@ -33,3 +33,8 @@
 .add-task {
   margin-top: 100px;
 }
+
+.current-task-detail {
+  background-color: red;
+  width: 500px;
+}

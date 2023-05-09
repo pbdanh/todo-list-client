@@ -8,6 +8,8 @@ import taskGroupListReducer from "../slice/taskGroupListSlice";
 
 import taskListReducer from "../slice/taskListSlice";
 
+import currentTaskReducer from "../slice/currentTaskSlice";
+
 export const store = configureStore({
 
     reducer: {
@@ -15,6 +17,7 @@ export const store = configureStore({
         currentTaskGroup: currentTaskGroupReducer,
         taskGroupList: taskGroupListReducer,
         taskList: taskListReducer,
+        currentTask: currentTaskReducer,
     },
 })
 

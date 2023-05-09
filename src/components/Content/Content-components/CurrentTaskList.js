@@ -9,6 +9,7 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import StarIcon from '@mui/icons-material/Star';
 
+import { setCurrentTask } from "../../../slice/currentTaskSlice";
 
 export default function CurrentTaskList() {
 
@@ -40,7 +41,7 @@ export default function CurrentTaskList() {
     }
     else {
       content = <CircleOutlinedIcon />
-    }
+    } 
     return(
       <button onClick={() => {
         SwitchCompleteStatus(props.taskId)
@@ -53,6 +54,10 @@ export default function CurrentTaskList() {
   const taskList = useSelector((state) => state.taskList);
 
 
+  function SelectTask(task) {
+    dispatch(setCurrentTask(task));
+
+  }
   
 
   return (
@@ -62,10 +67,11 @@ export default function CurrentTaskList() {
         {taskList.list.map((task) => (
           <div className="todo-list-li">
             <Abc complete = {task.complete} taskId = {task.id} />
-            <li className={task.complete ? 'completed-task' : ''}>{task.title} 
-            <button className="star"><StarIcon/></button>
+            <li className={task.complete ? 'completed-task' : ''}
+              onClick = {() => {SelectTask(task)}}>
+                {task.title} 
             </li>
-            
+            <button className="star"><StarIcon/></button>
           </div>
         ))}
       </ul>

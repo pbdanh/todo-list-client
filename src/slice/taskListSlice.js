@@ -23,7 +23,21 @@ export const taskListSlice = createSlice({
         }
       }
     },
+    UpdateTask: (state, action)  => {
+      // console.log("!!");
+      // console.log(action.payload)
+      for(let task of state.list) {
+        if(task.id == action.payload.id) {
+          // console.log("hehe");
+          task.title = action.payload.title;
+          task.taskGroupId = action.payload.taskGroupId;
+          task.complete = action.payload.complete;
+          task.important = action.payload.important;
+          task.note = action.payload.note;
+        }
+      }
+    }
   },
 });
-export const { SetTaskList, AddNewTask, Test } = taskListSlice.actions; //TODO : đổi tên cái test
+export const { SetTaskList, AddNewTask, Test, UpdateTask } = taskListSlice.actions; //TODO : đổi tên cái test
 export default taskListSlice.reducer;
