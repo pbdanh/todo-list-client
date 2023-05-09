@@ -17,7 +17,7 @@ export default function UserInfo() {
         },
       })
       .then((res) => {
-        setUser(res.data.firstname + " " + res.data.lastname);
+        setUser(res.data.firstname);
         console.log(res.data);
       })
       .catch((error) => {
@@ -33,9 +33,10 @@ export default function UserInfo() {
 
   return (
     <div className="userInfo">
-      <p>Hello {user}</p>
+      <p>Hello  {" "}
+        <a href="viewuserinfo">{user}</a> </p>
       <button className="btn-log-out" onClick={logout}>
-        Logout
+        Logout  
       </button>
     </div>
   );

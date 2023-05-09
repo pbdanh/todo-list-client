@@ -1,0 +1,155 @@
+.user-view {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: url("/src/asset/background.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.user-view-wrapper {
+  position: relative;
+  width: 600px;
+  height: 600px;
+  background: transparent;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.5s ease height 0.2s ease;
+}
+
+.form-box-register h2 {
+  display: flex;
+  justify-content: center;
+}
+
+.full-name {
+  display: flex;
+  justify-content: space-between;
+}
+
+.input-box-first {
+    /* Add background color */ 
+  margin-right: 20px;
+  position: relative;
+  width: 50%;
+  height: 50px;
+  margin: 30px 0;
+}
+
+.input-box-first input {
+  width: 50%;
+  height: 100%;
+  background: transparent;
+  /* border: none; */
+  outline: none;
+  font-size: 1em;
+  color: #162938;
+  font-weight: 600;
+  padding: 0 35px 0 5px;
+}
+
+
+.input-box-first label {
+  position: absolute;
+  top: -10px;
+  left: 5px;
+  transform: translateY(-50%);
+  font-size: 1em;
+  color: #162938;
+  font-weight: 500;
+  pointer-events: none;
+  transition: 0.5s;
+}
+
+
+
+.input-box-last {
+  position: relative;
+  width: 60%;
+  height: 50px;
+
+  margin: 30px 0;
+}
+
+.input-box-last input {
+  width: 50%;
+  height: 100%;
+  background: transparent;
+      
+  outline: none;
+  font-size: 1em;
+  color: #162938;
+  font-weight: 600;
+  padding: 0 35px 0 5px;
+}
+
+.input-box-last label {
+  position: absolute;
+  top: -10px;
+  left: 5px;
+  transform: translateY(-50%);
+  font-size: 1em;
+  color: #162938;
+  font-weight: 500;
+  pointer-events: none;
+  transition: 0.5s;
+}
+/* 
+
+.space-between {
+  width: 20px;
+} */
+
+.login-register p a {
+  cursor: pointer;
+  color: #162938;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.input-box-fix {
+  margin-right: 20px;
+  position: relative;
+  width: 100%;
+  height: 50px;
+  margin: 30px 0;
+}
+
+.input-box-fix input {
+  width: 70%;
+  height: 100%;
+  background: transparent;
+  /* border: none; */
+  outline: none;
+  font-size: 1em;
+  color: #162938;
+  font-weight: 600;
+  padding: 0 35px 0 5px;
+}
+
+
+
+
+.input-box-fix input:focus ~ label,
+.input-box-fix input:valid ~ label {
+  top: -10px;
+}
+
+.input-box-fix label {
+  position: absolute;
+  top: -10px;
+  left: 5px;
+  transform: translateY(-50%);
+  font-size: 1em;
+  color: #162938;
+  font-weight: 500;
+  pointer-events: none;
+  transition: 0.5s;
+}
