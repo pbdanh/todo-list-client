@@ -5,6 +5,16 @@
   width: 90%;
 }
 
+.userInfo a {
+  text-decoration: none;
+  color: black;
+}
+
+.userInfo a:hover {
+  text-decoration: underline;
+  color: whitesmoke;
+}
+
 .btn-log-out {
   height: 50%;
   width: 30%;

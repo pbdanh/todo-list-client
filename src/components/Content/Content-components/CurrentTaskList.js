@@ -13,7 +13,6 @@ import StarIcon from '@mui/icons-material/Star';
 export default function CurrentTaskList() {
 
   const dispatch = useDispatch();
-
   function SwitchCompleteStatus(taskId) {
   
     let data = {};
