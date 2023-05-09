@@ -4,10 +4,14 @@ import "./CurrentTaskList.css";
 import axios from "axios";
 import { SwitchCompleteStatusById } from '../../../slice/taskListSlice';
 import { Test } from "../../../slice/taskListSlice";
+import { SwitchImportantStatus as swImportantAction } from "../../../slice/taskListSlice";
 import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import StarIcon from '@mui/icons-material/Star';
+
+import { SwitchCurrentTaskCompleteStatus } from "../../../slice/currentTaskSlice";
+import { SwitchCurrentTaskImportantStatus } from "../../../slice/currentTaskSlice";
 
 import { setCurrentTask } from "../../../slice/currentTaskSlice";
 
@@ -31,9 +35,31 @@ export default function CurrentTaskList() {
   
     axios.put("http://localhost:8080/api/switchCompleteStatus", data, config);
     dispatch(Test(taskId));
+    dispatch(SwitchCurrentTaskCompleteStatus(taskId));
+
   }
 
-  function Abc(props) {
+  function SwitchImportantStatus(taskId) {
+  
+    let data = {};
+  
+   
+  
+    let config = {
+      headers: {
+        Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+      },
+      params: {
+        taskId: taskId,
+      },
+    };
+  
+    axios.put("http://localhost:8080/api/switchImportantStatus", data, config);
+    dispatch(swImportantAction(taskId));
+    dispatch(SwitchCurrentTaskImportantStatus(taskId));
+  }
+
+  function SelectCircleIcon(props) {
     let content;
     if(props.complete) {
       content = <CheckCircleIcon />
@@ -44,6 +70,23 @@ export default function CurrentTaskList() {
     return(
       <button onClick={() => {
         SwitchCompleteStatus(props.taskId)
+      }}>
+        {content}
+      </button>
+    )
+  }
+
+  function SelectStarIcon(props) {
+    let content;
+    if(props.important) {
+      content = <StarIcon />
+    }
+    else {
+      content = <StarBorderIcon />
+    } 
+    return(
+      <button onClick={() => {
+        SwitchImportantStatus(props.taskId)
       }}>
         {content}
       </button>
@@ -65,12 +108,12 @@ export default function CurrentTaskList() {
       <ul>
         {taskList.list.map((task) => (
           <div className="todo-list-li">
-            <Abc complete = {task.complete} taskId = {task.id} />
+            <SelectCircleIcon complete = {task.complete} taskId = {task.id} />
             <li className={task.complete ? 'completed-task' : ''}
               onClick = {() => {SelectTask(task)}}>
                 {task.title} 
             </li>
-            <button className="star"><StarIcon/></button>
+            <SelectStarIcon important = {task.important} taskId = {task.id} />
           </div>
         ))}
       </ul>

@@ -15,7 +15,7 @@ export const currentTaskGroupSlice = createSlice({
       state.id = action.payload.id;
       state.name = action.payload.name;
       state.changeName = action.payload.changeName;
-      state.active = action.payload.active;
+      state.active = true;
     },
     inactiveCurrentTaskGroup: (state) => {
       state.active = false;

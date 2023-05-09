@@ -23,6 +23,13 @@ export const taskListSlice = createSlice({
         }
       }
     },
+    SwitchImportantStatus: (state, action) => {
+      for (let item of state.list) {
+        if (item.id == action.payload) {
+          item.important = !item.important;
+        }
+      }
+    },
     UpdateTask: (state, action)  => {
       // console.log("!!");
       // console.log(action.payload)
@@ -36,8 +43,13 @@ export const taskListSlice = createSlice({
           task.note = action.payload.note;
         }
       }
+    },
+    DeleteTask: (state, action) => {
+      state.list = state.list.filter((value) => {
+        return value.id !== action.payload;
+      });
     }
   },
 });
-export const { SetTaskList, AddNewTask, Test, UpdateTask } = taskListSlice.actions; //TODO : đổi tên cái test
+export const { SetTaskList, AddNewTask, Test, SwitchImportantStatus, UpdateTask, DeleteTask } = taskListSlice.actions; //TODO : đổi tên cái test
 export default taskListSlice.reducer;

@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { SwitchImportantStatus } from "./taskListSlice";
 
 const initialState = {
   id: 0,
@@ -21,15 +22,27 @@ export const currentTaskSlice = createSlice({
       state.taskGroupId = action.payload.taskGroupId;
       state.complete = action.payload.complete;
       state.important = action.payload.important;
-      state.active = action.payload.active;
+      state.active = true;
     },
     inactiveCurrentTask: (state) => {
       state.active = false;
     },
+    SwitchCurrentTaskCompleteStatus: (state, action) => {
+      if(state.id == action.payload) {
+        state.complete = !state.complete;
+      }
+      
+    },
+    SwitchCurrentTaskImportantStatus: (state, action) => {
+      if(state.id == action.payload) {
+        state.important = !state.important;
+      }
+     
+    }
   },
 });
 
-export const { setCurrentTask, inactiveCurrentTask } =
+export const { setCurrentTask, inactiveCurrentTask, SwitchCurrentTaskCompleteStatus, SwitchCurrentTaskImportantStatus } =
   currentTaskSlice.actions;
 
 export default currentTaskSlice.reducer;

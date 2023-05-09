@@ -9,11 +9,14 @@ import { SetTaskList } from "../../../slice/taskListSlice";
 import { RemoveTaskGroupList } from "../../../slice/taskGroupListSlice";
 import { SetTaskGroupList } from "../../../slice/taskGroupListSlice";
 import "./ShowTaskGroup.css";
+import { inactiveCurrentTaskGroup } from "../../../slice/currentTaskGroupSlice";
+import { inactiveCurrentTask } from "../../../slice/currentTaskSlice";
 
 export default function ShowTaskGroup() {
   const dispatch = useDispatch();
   const navigation = useNavigate();
   const taskGroupList = useSelector((state) => state.taskGroupList);
+  const currentTaskGroup = useSelector((state) => state.currentTaskGroup)
   useEffect(() => {
     axios
       .get("http://localhost:8080/api/taskGroup", {
@@ -67,6 +70,10 @@ export default function ShowTaskGroup() {
     console.log(id);
     axios.delete("http://localhost:8080/api/taskGroup", config);
     dispatch(RemoveTaskGroupList(id));
+    if(id == currentTaskGroup.id) {
+      dispatch(inactiveCurrentTaskGroup());
+      dispatch(inactiveCurrentTask());
+    }
   }
 
   return (

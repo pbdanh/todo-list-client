@@ -8,7 +8,43 @@ import CreateNewTask from "./Content-components/CreateNewTask";
 import CurrentTaskName from "./Content-components/CurrentTaskName";
 import CurrenTaskDetail from "./Content-components/CurrentTaskDetail";
 import DeleteTask from "./Content-components/DeleteTask";
+import { useSelector } from "react-redux";
 import "./Content.css";
+import ExitTaskDetail from "./Content-components/ExitTaskDetail";
+
+function TaskShow() {
+  const currentTaskGroup = useSelector((state) => state.currentTaskGroup)
+  let content;
+  if(currentTaskGroup.active) {
+    content = <div className="task-show">
+                <CurrentTaskGroupName />
+                <CurrentTaskList />
+                <CreateNewTask />
+              </div>
+  }
+  else {
+    content = <></>
+  }
+  return content;
+}
+
+function TaskDetailShow() {
+  const currentTaskGroup = useSelector((state) => state.currentTaskGroup)
+  const currentTask = useSelector((state) => state.currentTask)
+  let content;
+  if(currentTaskGroup.active && currentTask.active) {
+    content = <div className="current-task">
+      <ExitTaskDetail />
+    <CurrentTaskName />
+    <CurrenTaskDetail />
+    <DeleteTask />
+  </div>
+  }
+  else {
+    content = <></>
+  }
+  return content;
+}
 
 export default function Content() {
   return (
@@ -19,16 +55,8 @@ export default function Content() {
         <ShowTaskGroup />
         <NewTaskGroup />
       </div>
-      <div className="task-show">
-        <CurrentTaskGroupName />
-        <CurrentTaskList />
-        <CreateNewTask />
-      </div>
-      <div className="current-task-detail">
-        <CurrentTaskName />
-        <CurrenTaskDetail />
-        <DeleteTask />
-      </div>
+      <TaskShow />
+      <TaskDetailShow />
     </div>
   );
 }
