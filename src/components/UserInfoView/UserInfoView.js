@@ -34,26 +34,24 @@ export default function UserInfoView() {
           <form>
             <div className="full-name">
               <div className="input-box-first">
-                <input type="text" required value={firstname} />
+                <input required value={firstname} readOnly  />
                 <label>Firstname</label>
               </div>
               <div className="space-between"></div>
               <div className="input-box-last">
-                <input type="text" required value={lastname} />
-                <label>Lastname</label>
+                <input type="text" required value={lastname} readOnly />
+                <label> Lastname </label>
               </div>
             </div>
-            <div className="input-box">
-              <input type="text" required value={email} />
+            <div className="input-box-fix">
+              <input type="text" required value={email} readOnly />
               <label>Email</label>
             </div>
-            <div className="input-box">
-              <input type="text" required value={username} />
+            <div className="input-box-fix">
+              <input type="text" required value={username} readOnly />
               <label>Username</label>
             </div>
-            {/* <button type="submit" className="btn">
-              Change
-            </button> */}
+          
             <div class="login-register">
               <p>
                 <a href="changepassword" className="content">

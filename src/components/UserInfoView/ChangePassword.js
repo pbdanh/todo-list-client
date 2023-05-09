@@ -1,9 +1,9 @@
-import "./UserInfoView.css";
+import "./changePassword.css";
 
 export default function ChangePassword() {
   return (
-    <div className="user-view">
-      <div className="user-view-wrapper">
+    <div className="new-password-view">
+      <div className="change-password-wrapper">
         <div className="form-box-register">
           <h2>Change Password User</h2>
           <form>
@@ -24,7 +24,7 @@ export default function ChangePassword() {
             </button>
             <div class="login-register">
               <p>
-                <a href="/" className="content">
+                <a href="/viewuserinfo" className="content">
                   Go Back
                 </a>
               </p>
