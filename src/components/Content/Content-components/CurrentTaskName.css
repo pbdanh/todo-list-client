@@ -41,8 +41,8 @@
 .current-task-name {
   display: flex;
   align-items: center;
-  margin-bottom: 300px;
-  margin-top: 130px;
+  margin-bottom: 250px;
+  margin-top: 30px;
 }
 
 .is-complete,
