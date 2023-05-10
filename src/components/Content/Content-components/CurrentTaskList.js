@@ -62,10 +62,18 @@ export default function CurrentTaskList() {
   function SelectCircleIcon(props) {
     let content;
     if(props.complete) {
-      content = <CheckCircleIcon />
+      content = 
+      <div className="circle-icon">
+        <CheckCircleIcon />
+      </div>
+      
     }
     else {
-      content = <CircleOutlinedIcon />
+      
+      content = 
+      <div className="circle-icon">
+        <CircleOutlinedIcon />
+      </div>
     } 
     return(
       <button onClick={() => {
@@ -79,10 +87,17 @@ export default function CurrentTaskList() {
   function SelectStarIcon(props) {
     let content;
     if(props.important) {
-      content = <StarIcon />
+      content = 
+      <div className="star-icon">
+        <StarIcon />
+      </div>
+      
     }
     else {
-      content = <StarBorderIcon />
+      content = 
+      <div className="star-icon">
+        <StarBorderIcon />
+      </div>
     } 
     return(
       <button onClick={() => {
@@ -113,7 +128,7 @@ export default function CurrentTaskList() {
               onClick = {() => {SelectTask(task)}}>
                 {task.title} 
             </li>
-            <SelectStarIcon important = {task.important} taskId = {task.id} />
+            <SelectStarIcon className="star-icon" important = {task.important} taskId = {task.id} />
           </div>
         ))}
       </ul>

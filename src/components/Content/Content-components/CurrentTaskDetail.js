@@ -39,12 +39,12 @@ export default function CurrenTaskDetail() {
 
   return (
     <div className = "note-task" >
-      <input className = 'add-note' 
+      <textarea className = 'add-note' 
         type="text"
         placeholder="Add note..."
         value={currentTask.note}
         onChange={handleOnchangeEvent}
-      ></input>
+      ></textarea>
     </div>
   );
 }

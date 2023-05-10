@@ -4,6 +4,7 @@ import axios from "axios";
 import { DeleteTask as delTaskInTaskList } from "../../../slice/taskListSlice";
 import { inactiveCurrentTask } from "../../../slice/currentTaskSlice";
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
+import './DeleteTask.css'
 export default function DeleteTask() {
   const currentTask = useSelector((state) => state.currentTask);
   const dispatch = useDispatch();
@@ -24,7 +25,7 @@ export default function DeleteTask() {
   }
 
   return (
-    <div>
+    <div className = 'delete-button'>
       <button onClick={deleteTask}>
         <DeleteOutlineOutlinedIcon/>
       </button>

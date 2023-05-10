@@ -11,23 +11,37 @@ export default function CreateNewTask() {
   const [taskName, setTaskName] = useState("");
   const currentTaskGroup = useSelector((state) => state.currentTaskGroup);
   function createNewTask() {
-    const task = {
-      title: taskName,
-      taskGroupId: currentTaskGroup.id,
-    };
-    axios
-      .post("http://localhost:8080/api/task", task, {
-        headers: {
-          Authorization: `Bearer ${window.localStorage.getItem("token")}`,
-        },
-      })
-      .then((res) => {
-        console.log(res.data);
-        document.getElementById("cde").value = "";
-        setTaskName("");
-        dispatch(AddNewTask(res.data));
-      });
+    // setTaskName(taskName.trim());
+    const string = taskName.trim();
+    if (string === "") {
+    } else {
+      const task = {
+        title: string,
+        taskGroupId: currentTaskGroup.id,
+      };
+      axios
+        .post("http://localhost:8080/api/task", task, {
+          headers: {
+            Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+          },
+        })
+        .then((res) => {
+          console.log(res.data);
+          document.getElementById("cde").value = "";
+          setTaskName("");
+          dispatch(AddNewTask(res.data));
+        });
+    }
   }
+
+  const handleKeyDown = (event) => {
+    // console.log("!!");
+    if (event.key === "Enter") {
+      // console.log('do validate')
+      // createTaskGroup();
+      createNewTask();
+    }
+  };
 
   return (
     <div className="add-a-new-task">
@@ -38,6 +52,7 @@ export default function CreateNewTask() {
         onChange={(event) => {
           setTaskName(event.target.value);
         }}
+        onKeyDown={handleKeyDown}
       />
       <button className="create-new-task-btn" onClick={createNewTask}>
         <SendIcon />

@@ -7,27 +7,29 @@ export function Register() {
   }
   return (
     <div className="formRegister">
+      
       <div className="wrapper-register">
+    
         <div className="form-box-register">
-          <h2>Registeration</h2>
+        <h2>Registeration</h2>
           <form onSubmit={registerSubmit}>
-            <div className="input-box">
+            <div className="input-box-register">
               <input type="text" required />
               <label>Firstname</label>
             </div>
-            <div className="input-box">
+            <div className="input-box-register">
               <input type="text" required />
               <label>Lastname</label>
             </div>
-            <div className="input-box">
+            <div className="input-box-register">
               <input type="text" required />
               <label>Email</label>
             </div>
-            <div className="input-box">
+            <div className="input-box-register">
               <input type="text" required />
               <label>Username</label>
             </div>
-            <div className="input-box">
+            <div className="input-box-register">
               <input type="text" required />
               <label>Password</label>
             </div>

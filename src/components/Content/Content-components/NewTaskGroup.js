@@ -12,23 +12,41 @@ export default function NewTaskGroup() {
     setNewTaskGroup(e.target.value);
   }
   function createTaskGroup() {
-    const newTaskGroupData = {
-      name: newTaskGroup,
-    };
-    axios
-      .post("http://localhost:8080/api/taskGroup", newTaskGroupData, {
-        headers: {
-          Authorization: `Bearer ${window.localStorage.getItem("token")}`,
-        },
-      })
-      .then((res) => {
-        console.log(res.data);
-        dispatch(AddNewTaskGroup(res.data));
-        console.log(res.data);
-        document.getElementById("abc").value = "";
-      });
-    setNewTaskGroup("");
+    const string = newTaskGroup.trim();
+    
+    if(string.length === 0) {
+
+    }
+    else {
+      const newTaskGroupData = {
+        name: string,
+      };
+      axios
+        .post("http://localhost:8080/api/taskGroup", newTaskGroupData, {
+          headers: {
+            Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+          },
+        })
+        .then((res) => {
+          console.log(res.data);
+          dispatch(AddNewTaskGroup(res.data));
+          console.log(res.data);
+          document.getElementById("abc").value = "";
+        });
+      setNewTaskGroup("");
+
+    }
+    
   }
+
+  const handleKeyDown = (event) => {
+    // console.log("!!");
+    if (event.key === 'Enter') {
+      // console.log('do validate')
+      createTaskGroup();
+    }
+  }
+
   return (
     <div className="add-new-task">
       <div className="input-task">
@@ -37,9 +55,10 @@ export default function NewTaskGroup() {
           placeholder="Add a new TaskGroup"
           id="abc"
           onChange={handleEnterNewTaskGroupName}
+          onKeyDown={handleKeyDown}
         ></input>
       </div>
-      <button className="add-task-button" onClick={createTaskGroup}>
+      <button className="add-task-button" onClick={createTaskGroup} >
         <AddIcon />
       </button>
     </div>

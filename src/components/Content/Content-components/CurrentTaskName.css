@@ -1,48 +1,10 @@
-/* .current-task-name {
-    display: flex;
-    flex-direction: row;
-   
-}
-
-.is-complete button {
-    border: none;
-    background:transparent;
-    background-color: transparent;
-    cursor:pointer;
-}
-
-.is-complete {
-    border: none;
-    background:transparent;
-    background-color: transparent;
-}
-
-.is-important button {
-    border: none;
-    background:transparent;
-    background-color: transparent;
-}
-
-.is-important {
-    background-color: red;
-    border: none;
-    background:transparent;
-    background-color: transparent;
-    cursor:pointer;
-}
-
-.input-task-name {
-    height: 20px;
-    text-align: center;
-    width: 150px;
-   
-} */
 
 .current-task-name {
   display: flex;
   align-items: center;
-  margin-bottom: 250px;
-  margin-top: 30px;
+  margin-bottom: 50px;
+  margin-top: 7px;
+  font-size: 50px;
 }
 
 .is-complete,
@@ -53,12 +15,12 @@
 }
 
 .input-task-name {
-  flex: 1;
+ 
   margin: 0 10px;
   padding: 5px;
   border: none;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 20px;
 }
 
 .is-complete button,
@@ -75,7 +37,6 @@
 
 .is-complete button:hover,
 .is-important button:hover {
-  background-color: #eee;
 }
 
 .is-complete button:focus,
@@ -90,14 +51,8 @@
 
 .is-complete button svg,
 .is-important button svg {
-  width: 18px;
-  height: 18px;
+  width: 30px;
+  height: 30px;
 }
 
-.is-complete button svg {
-  color: #3f51b5;
-}
 
-.is-important button svg {
-  color: black;
-}

@@ -17,10 +17,11 @@ div.task-with-icon:hover {
 }
 
 .task-with-icon li {
+  
   box-sizing: border-box;
   padding-left: 17px;
   list-style: none;
-  width: 100%;
+  width: 95%;
   /* border: solid 2px red; */
   /* padding-right: 20%; */
 }

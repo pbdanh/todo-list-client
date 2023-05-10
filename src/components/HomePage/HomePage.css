@@ -11,7 +11,7 @@
 
 .wrapper-login {
   position: relative;
-  width: 400px;
+  width: 375px;
   height: 450px;
   background: transparent;
   background-color: rgba(255, 255, 255, 0.5);
@@ -35,11 +35,11 @@
   transform: translateX(0);
 }
 
-.form-box h2 {
+/* .form-box h2 {
   font-size: 2em;
   color: #162938;
   text-align: center;
-}
+} */
 
 .input-box {
   position: relative;
