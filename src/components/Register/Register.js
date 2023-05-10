@@ -1,7 +1,67 @@
 import React from "react";
 import "./Register.css";
 
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
 export function Register() {
+
+  const navigation = useNavigate();
+
+  const [registerData, setRegisterData] = useState({
+    "firstName": "",
+    "lastName": "",
+    "email": "",
+    "username": "",
+    "password": ""
+  });
+
+  function doRegiter() {
+    axios.post("http://localhost:8080/api/register", registerData)
+    .then((res) => {
+      // console.log("thanh cong");
+      navigation("/");
+    })
+  }
+
+  function changeFirstName(e) {
+    // console.log("data");
+    // console.log(e.target.value);
+    let copyData = {...registerData};
+    copyData.firstName = e.target.value;
+    setRegisterData(copyData);
+    console.log(registerData);
+  }
+
+  function changeLastName(e) {
+    let copyData = {...registerData};
+    copyData.lastName = e.target.value;
+    setRegisterData(copyData);
+    console.log(registerData);
+  }
+
+  function changeEmail(e) {
+    let copyData = {...registerData};
+    copyData.email = e.target.value;
+    setRegisterData(copyData);
+    console.log(registerData);
+  }
+
+  function changeUsername(e) {
+    let copyData = {...registerData};
+    copyData.username = e.target.value;
+    setRegisterData(copyData);
+    console.log(registerData);
+  }
+
+  function changePassword(e) {
+    let copyData = {...registerData};
+    copyData.password = e.target.value;
+    setRegisterData(copyData);
+    console.log(registerData);
+  }
+
   function registerSubmit(event) {
     event.preventDefault();
   }
@@ -14,27 +74,27 @@ export function Register() {
         <h2>Registeration</h2>
           <form onSubmit={registerSubmit}>
             <div className="input-box-register">
-              <input type="text" required />
+              <input type="text" required onChange={changeFirstName}/>
               <label>Firstname</label>
             </div>
             <div className="input-box-register">
-              <input type="text" required />
+              <input type="text" required onChange={changeLastName}/>
               <label>Lastname</label>
             </div>
             <div className="input-box-register">
-              <input type="text" required />
+              <input type="text" required onChange = {changeEmail} />
               <label>Email</label>
             </div>
             <div className="input-box-register">
-              <input type="text" required />
+              <input type="text" required onChange = {changeUsername} />
               <label>Username</label>
             </div>
             <div className="input-box-register">
-              <input type="text" required />
+              <input type="text" required onChange={changePassword}/>
               <label>Password</label>
             </div>
-            <button type="submit" className="btn">
-              Login
+            <button type="submit" className="btn" onClick={doRegiter}>
+              Sign Up
             </button>
             <div class="login-register">
               <p>
