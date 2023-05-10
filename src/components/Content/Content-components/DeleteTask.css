@@ -1,8 +1,5 @@
 .delete-button {
-  /* background-color:red; */
   display: flex;
   align-items: center;
   height: 100%;
 }
-
-
