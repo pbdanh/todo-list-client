@@ -1,45 +1,72 @@
 import "./changePassword.css";
 import { useState } from "react";
+import axios from "axios";
 export default function ChangePassword() {
-  const [currentPassword, setCurrentPassword] = useState("");
-  const [changePassword, setChangePassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [passwordSetting, setPasswordSetting] = useState({
+    currentPassword: "",
+    changePassword: "",
+    confirmPassword: "",
+  });
+  
   function handleCurrentPassword(e) {
-    setCurrentPassword(e.target.value);
+    let temp = {...passwordSetting}
+    temp.currentPassword = e.target.value;
+    setPasswordSetting(temp);
   }
   function handleChangePassword(e) {
-    setChangePassword(e.target.value);
+    let temp = {...passwordSetting}
+    temp.changePassword = e.target.value;
+    setPasswordSetting(temp);
   }
   function handleConfirmPassword(e) {
-    setConfirmPassword(e.target.value);
+    let temp = {...passwordSetting}
+    temp.confirmPassword = e.target.value;
+    setPasswordSetting(temp);
   }
+  function submitForm(e) {
+    e.preventDefault();
+  }
+  function submitChangePassword() {
+    console.log('123');
+    const data = {
+      "currentPassword":passwordSetting.currentPassword,
+      "newPassword":passwordSetting.changePassword,
+    }
+    console.log(data);
+    axios.put('http://localhost:8080/api/changePassword', data, {
+      headers: {
+        Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+      },
+    })
+  }
+
   return (
     <div className="new-password-view">
       <div className="change-password-wrapper">
         <div className="form-box-register">
           <h2>Change Password User</h2>
-          <form>
+          <form onSubmit = {submitForm}>
             <div className="input-box">
               <input type="password"
-              value = {currentPassword}
+              value = {passwordSetting.currentPassword}
               onChange={handleCurrentPassword}
               required />
               <label>Current Password</label>
             </div>
             <div className="input-box">
               <input type="password"
-              value = {changePassword}
+              value = {passwordSetting.changePassword}
               onChange={handleChangePassword}
               required />
               <label>New PassWord</label>
             </div>
             <div className="input-box">
               <input type="password" required
-              value = {confirmPassword}
+              value = {passwordSetting.confirmPassword} 
               onChange = {handleConfirmPassword} />
               <label>Confirm new password</label>
             </div>
-            <button type="submit" className="btn">
+            <button onClick = {submitChangePassword} type="submit" className="btn">
               Change Password
             </button>
             <div class="login-register">
