@@ -32,11 +32,20 @@ export default function UserInfoView() {
   }
 
   function updateUserProfile() {
+    const data = {
+      "firstName": userProfile.firstname,
+      "lastName": userProfile.lastname,
+      "email":userProfile.email
+    }
+    // console.log(userProfile);
     axios
-    .put("http://localhost:8080/api/user", userProfile, {
+    .put("http://localhost:8080/api/user", data, {
       headers: {
         Authorization: `Bearer ${window.localStorage.getItem("token")}`,
       },
+    })
+    .then((res) => {
+      window.location.reload(false);
     });
   }
 

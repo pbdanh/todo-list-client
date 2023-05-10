@@ -45,10 +45,12 @@
   display: flex;
   background-color: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(20px);
-  width: 500px;
+  width: 650px;
   border-radius: 3px;
   flex-direction: column;
   border-left: 1px solid rgba(255, 255, 255, 0.5);
+  align-items: center;
+  /* background-color: red; */
 
   /* justify-content: space-between ; */}
 
@@ -89,7 +91,9 @@
 .task-detail {
   background-color: transparent;
   justify-content: space-between;
-  
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 
