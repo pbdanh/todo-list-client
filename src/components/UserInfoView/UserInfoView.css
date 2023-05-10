@@ -27,7 +27,6 @@
 .form-box-profile {
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
 
 
 }
@@ -41,13 +40,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 60px;
 }
 
 .input-box-first {
     /* Add background color */ 
   margin-right: 20px;
   position: relative;
-  width: 50%;
+  width: 100%;
   height: 50px;
   margin: 30px 0;
 }
@@ -55,7 +55,7 @@
 .input-box-first input {
   display:flex;
   align-items: center;
-  width: 50%;
+  width: 80%;
   height: 100%;
   background: transparent;
   /* border: none; */
@@ -82,16 +82,15 @@
 
 .input-box-last {
   position: relative;
-  width: 60%;
+  width: 100%;
   height: 50px;
   margin: 30px 0;
 }
 
 .input-box-last input {
-  width: 50%;
+  width: 80%;
   height: 100%;
   background: transparent;
-      
   outline: none;
   font-size: 1em;
   color: #162938;
@@ -110,11 +109,7 @@
   pointer-events: none;
   transition: 0.5s;
 }
-/* 
 
-.space-between {
-  width: 20px;
-} */
 
 .login-register p a {
   cursor: pointer;
@@ -126,16 +121,15 @@
 .input-box-fix {
   margin-right: 20px;
   position: relative;
-  width: 80%;
+  width: 100%;
   height: 50px;
   margin: 30px 0;
 }
 
 .input-box-fix input {
-  width: 91%;
+  width: 90%;
   height: 100%;
   background: transparent;
-  /* border: none; */
   outline: none;
   font-size: 1em;
   color: #162938;
@@ -164,7 +158,7 @@
 }
 
 .change-btn {
-  width: 80%;
+  width: 100%;
   height: 45px;
   background: #162938;
   border: none;
@@ -174,4 +168,8 @@
   font-size: 1em;
   color: #fff;
   font-weight: 500;
+}
+
+.space-between {
+  width: 40px;
 }
