@@ -1,0 +1,103 @@
+/* .current-task-name {
+    display: flex;
+    flex-direction: row;
+   
+}
+
+.is-complete button {
+    border: none;
+    background:transparent;
+    background-color: transparent;
+    cursor:pointer;
+}
+
+.is-complete {
+    border: none;
+    background:transparent;
+    background-color: transparent;
+}
+
+.is-important button {
+    border: none;
+    background:transparent;
+    background-color: transparent;
+}
+
+.is-important {
+    background-color: red;
+    border: none;
+    background:transparent;
+    background-color: transparent;
+    cursor:pointer;
+}
+
+.input-task-name {
+    height: 20px;
+    text-align: center;
+    width: 150px;
+   
+} */
+
+.current-task-name {
+  display: flex;
+  align-items: center;
+  margin-bottom: 300px;
+  margin-top: 130px;
+}
+
+.is-complete,
+.is-important {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.input-task-name {
+  flex: 1;
+  margin: 0 10px;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.is-complete button,
+.is-important button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+}
+
+.is-complete button:hover,
+.is-important button:hover {
+  background-color: #eee;
+}
+
+.is-complete button:focus,
+.is-important button:focus {
+  outline: none;
+}
+
+.is-complete button:active,
+.is-important button:active {
+  transform: translateY(1px);
+}
+
+.is-complete button svg,
+.is-important button svg {
+  width: 18px;
+  height: 18px;
+}
+
+.is-complete button svg {
+  color: #3f51b5;
+}
+
+.is-important button svg {
+  color: black;
+}

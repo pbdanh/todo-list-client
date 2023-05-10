@@ -4,15 +4,11 @@ import { useDispatch } from "react-redux";
 import React from "react";
 import axios from "axios";
 
-
 import { setCurrentTask } from "../../../slice/currentTaskSlice";
 import { UpdateTask } from "../../../slice/taskListSlice";
-
-
+import './CurrentTaskDetail.css';
 export default function CurrenTaskDetail() {
-    
-
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const currentTask = useSelector((state) => state.currentTask);
 
@@ -27,7 +23,7 @@ export default function CurrenTaskDetail() {
       taskGroupId: currentTask.taskGroupId,
       complete: currentTask.complete,
       important: currentTask.important,
-      note: e.target.value
+      note: e.target.value,
     };
 
     axios
@@ -41,13 +37,14 @@ export default function CurrenTaskDetail() {
       });
   }
 
-    return (
-    <div>        
-        <input
-            type="text"
-            value={currentTask.note}
-            onChange={handleOnchangeEvent}>
-
-        </input>
-    </div>)
+  return (
+    <div className = "note-task" >
+      <input className = 'add-note' 
+        type="text"
+        placeholder="Add note..."
+        value={currentTask.note}
+        onChange={handleOnchangeEvent}
+      ></input>
+    </div>
+  );
 }

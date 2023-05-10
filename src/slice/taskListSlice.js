@@ -18,14 +18,14 @@ export const taskListSlice = createSlice({
     },
     Test: (state, action) => {
       for (let item of state.list) {
-        if (item.id == action.payload) {
+        if (item.id === action.payload) {
           item.complete = !item.complete;
         }
       }
     },
     SwitchImportantStatus: (state, action) => {
       for (let item of state.list) {
-        if (item.id == action.payload) {
+        if (item.id === action.payload) {
           item.important = !item.important;
         }
       }
@@ -34,7 +34,7 @@ export const taskListSlice = createSlice({
       // console.log("!!");
       // console.log(action.payload)
       for(let task of state.list) {
-        if(task.id == action.payload.id) {
+        if(task.id === action.payload.id) {
           // console.log("hehe");
           task.title = action.payload.title;
           task.taskGroupId = action.payload.taskGroupId;

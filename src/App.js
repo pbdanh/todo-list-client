@@ -26,14 +26,14 @@ function App() {
               </div>
             }
           ></Route>
-          <Route path = "/changepassword"
-            element = {
+          <Route
+            path="/changepassword"
+            element={
               <div>
-                <ChangePassword/>
+                <ChangePassword />
               </div>
-            }>
-            
-          </Route>
+            }
+          ></Route>
         </Routes>
       </BrowserRouter>
     </div>

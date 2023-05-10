@@ -3,9 +3,7 @@ import { useDispatch } from "react-redux";
 
 import React from "react";
 import axios from "axios";
-
-
-
+import './CurrentTaskName.css'
 import { setCurrentTask } from "../../../slice/currentTaskSlice";
 import { UpdateTask } from "../../../slice/taskListSlice";
 import { Test } from "../../../slice/taskListSlice";
@@ -14,10 +12,10 @@ import { SwitchImportantStatus as swImportantAction } from "../../../slice/taskL
 import { SwitchCurrentTaskCompleteStatus } from "../../../slice/currentTaskSlice";
 import { SwitchCurrentTaskImportantStatus } from "../../../slice/currentTaskSlice";
 
-import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import StarBorderIcon from '@mui/icons-material/StarBorder';
-import StarIcon from '@mui/icons-material/Star';
+import CircleOutlinedIcon from "@mui/icons-material/CircleOutlined";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import StarBorderIcon from "@mui/icons-material/StarBorder";
+import StarIcon from "@mui/icons-material/Star";
 
 export default function CurrentTaskName() {
   const dispatch = useDispatch();
@@ -25,11 +23,8 @@ export default function CurrentTaskName() {
   const currentTask = useSelector((state) => state.currentTask);
 
   function SwitchCompleteStatus(taskId) {
-  
     let data = {};
-  
-   
-  
+
     let config = {
       headers: {
         Authorization: `Bearer ${window.localStorage.getItem("token")}`,
@@ -38,18 +33,15 @@ export default function CurrentTaskName() {
         taskId: taskId,
       },
     };
-  
+
     axios.put("http://localhost:8080/api/switchCompleteStatus", data, config);
     dispatch(Test(taskId));
     dispatch(SwitchCurrentTaskCompleteStatus(taskId));
   }
 
   function SwitchImportantStatus(taskId) {
-  
     let data = {};
-  
-   
-  
+
     let config = {
       headers: {
         Authorization: `Bearer ${window.localStorage.getItem("token")}`,
@@ -58,7 +50,7 @@ export default function CurrentTaskName() {
         taskId: taskId,
       },
     };
-  
+
     axios.put("http://localhost:8080/api/switchImportantStatus", data, config);
     dispatch(swImportantAction(taskId));
     dispatch(SwitchCurrentTaskImportantStatus(taskId));
@@ -75,7 +67,7 @@ export default function CurrentTaskName() {
       taskGroupId: currentTask.taskGroupId,
       complete: currentTask.complete,
       important: currentTask.important,
-      note: currentTask.note
+      note: currentTask.note,
     };
 
     axios
@@ -91,50 +83,61 @@ export default function CurrentTaskName() {
 
   function SelectCircleIcon(props) {
     let content;
-    if(props.complete) {
-      content = <CheckCircleIcon />
+    if (props.complete) {
+      content = <CheckCircleIcon />;
+    } else {
+      content = <CircleOutlinedIcon />;
     }
-    else {
-      content = <CircleOutlinedIcon />
-    } 
-    return(
-      <button onClick={() => {
-        SwitchCompleteStatus(props.taskId)
-      }}>
+    return (
+      <button
+        onClick={() => {
+          SwitchCompleteStatus(props.taskId);
+        }}
+      >
         {content}
       </button>
-    )
+    );
   }
 
   function SelectStarIcon(props) {
     let content;
-    if(props.important) {
-      content = <StarIcon />
+    if (props.important) {
+      content = <StarIcon />;
+    } else {
+      content = <StarBorderIcon />;
     }
-    else {
-      content = <StarBorderIcon />
-    } 
-    return(
-      <button onClick={() => {
-        SwitchImportantStatus(props.taskId)
-      }}>
+    return (
+      <button
+        onClick={() => {
+          SwitchImportantStatus(props.taskId);
+        }}
+      >
         {content}
       </button>
-    )
+    );
   }
 
   return (
-    <div class="curent-task-name">
-      <SelectCircleIcon complete = {currentTask.complete} taskId = {currentTask.id} />
+    <div className="current-task-name">
+      <button className="is-complete">
+        <SelectCircleIcon
+          complete={currentTask.complete}
+          taskId={currentTask.id}
+        />
+      </button>
+
       <input
         type="text"
+        className = "input-task-name"
         value={currentTask.title}
         onChange={handleOnchangeEvent}
-        
       ></input>
-      <SelectStarIcon important = {currentTask.important} taskId = {currentTask.id} />
+      <button className="is-important">
+        <SelectStarIcon
+          important={currentTask.important}
+          taskId={currentTask.id}
+        />
+      </button>
     </div>
-      
-   
   );
 }

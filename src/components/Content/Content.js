@@ -13,35 +13,45 @@ import "./Content.css";
 import ExitTaskDetail from "./Content-components/ExitTaskDetail";
 
 function TaskShow() {
-  const currentTaskGroup = useSelector((state) => state.currentTaskGroup)
+  const currentTaskGroup = useSelector((state) => state.currentTaskGroup);
   let content;
-  if(currentTaskGroup.active) {
-    content = <div className="task-show">
-                <CurrentTaskGroupName />
-                <CurrentTaskList />
-                <CreateNewTask />
-              </div>
-  }
-  else {
-    content = <></>
+  if (currentTaskGroup.active) {
+    content = (
+      <div className="task-show">
+        <CurrentTaskGroupName />
+        <CurrentTaskList />
+        <CreateNewTask />
+      </div>
+    );
+  } else {
+    content = <></>;
   }
   return content;
 }
 
 function TaskDetailShow() {
-  const currentTaskGroup = useSelector((state) => state.currentTaskGroup)
-  const currentTask = useSelector((state) => state.currentTask)
+  const currentTaskGroup = useSelector((state) => state.currentTaskGroup);
+  const currentTask = useSelector((state) => state.currentTask);
   let content;
-  if(currentTaskGroup.active && currentTask.active) {
-    content = <div className="current-task">
-      <ExitTaskDetail />
-    <CurrentTaskName />
-    <CurrenTaskDetail />
-    <DeleteTask />
-  </div>
-  }
-  else {
-    content = <></>
+  if (currentTaskGroup.active && currentTask.active) {
+    content = (
+      <div className="current-task">
+        <div className="exit-task">
+          <ExitTaskDetail />
+        </div>
+
+        <div className="task-detail">
+          <CurrentTaskName />
+          <CurrenTaskDetail />
+        </div>
+
+        <div className="delete-a-task">
+          <DeleteTask />
+        </div>
+      </div>
+    );
+  } else {
+    content = <></>;
   }
   return content;
 }
