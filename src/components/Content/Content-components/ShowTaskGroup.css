@@ -26,6 +26,11 @@ div.task-with-icon:hover {
   /* padding-right: 20%; */
 }
 
+.line {
+  width: 100%;
+  border: .5px solid black;
+}
+
 .task-with-icon button {
   background: transparent;
   border: none;

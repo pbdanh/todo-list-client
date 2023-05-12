@@ -14,9 +14,10 @@ export default function CurrentTaskGroupName() {
   const currentTaskGroup = useSelector((state) => state.currentTaskGroup);
 
   function handleOnchangeEvent(e) {
-    let payload = { ...currentTaskGroup };
+    if(currentTaskGroup.changeAble) {
+      let payload = { ...currentTaskGroup };
     payload.name = e.target.value;
-    payload.changeName = true;
+    // payload.changeName = true;
     dispatch(setCurrentTaskGroup(payload));
 
     const data = {
@@ -33,6 +34,8 @@ export default function CurrentTaskGroupName() {
       .then((res) => {
         dispatch(UpdateTaskGroupList(res.data));
       });
+    }
+    
   }
 
   return (

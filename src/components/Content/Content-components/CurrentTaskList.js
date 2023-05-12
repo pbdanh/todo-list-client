@@ -17,6 +17,7 @@ import { setCurrentTask } from "../../../slice/currentTaskSlice";
 
 export default function CurrentTaskList() {
 
+
   const dispatch = useDispatch();
   function SwitchCompleteStatus(taskId) {
   
@@ -116,6 +117,16 @@ export default function CurrentTaskList() {
 
   }
   
+  function RenderDueDate(props) {
+   
+    if(props.dueDate != null) {
+      return (<p>📅 {props.dueDate}</p>);
+    }
+    return (
+      <></>
+    );
+  }
+
 
   return (
     <div className="task-show">
@@ -124,10 +135,16 @@ export default function CurrentTaskList() {
         {taskList.list.map((task) => (
           <div className="todo-list-li">
             <SelectCircleIcon complete = {task.complete} taskId = {task.id} />
-            <li className={task.complete ? 'completed-task' : ''}
-              onClick = {() => {SelectTask(task)}}>
-                {task.title} 
-            </li>
+            <div className="task-and-duedate" onClick = {() => {SelectTask(task)}}>
+              <div className={task.dueDate != null ? 'task-with-due-date' : 'task-without-due-date'}>
+                <li className={task.complete ? 'completed-task' : ''}>
+                  {task.title} 
+                 </li>
+              </div>
+                
+                 <RenderDueDate dueDate = {task.dueDate} />
+            </div>
+            
             <SelectStarIcon className="star-icon" important = {task.important} taskId = {task.id} />
           </div>
         ))}

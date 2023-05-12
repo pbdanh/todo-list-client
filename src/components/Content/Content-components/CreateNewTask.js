@@ -9,15 +9,18 @@ import "./CreateNewTask.css";
 export default function CreateNewTask() {
   const dispatch = useDispatch();
   const [taskName, setTaskName] = useState("");
+  const [dueDate, setDueDate] = useState("");
   const currentTaskGroup = useSelector((state) => state.currentTaskGroup);
   function createNewTask() {
     // setTaskName(taskName.trim());
     const string = taskName.trim();
+    console.log(dueDate);
     if (string === "") {
     } else {
       const task = {
         title: string,
         taskGroupId: currentTaskGroup.id,
+        dueDate: dueDate
       };
       axios
         .post("http://localhost:8080/api/task", task, {
@@ -54,6 +57,10 @@ export default function CreateNewTask() {
         }}
         onKeyDown={handleKeyDown}
       />
+      <input type = "date" className="date-select" onChange={(event) => {
+        setDueDate(event.target.value);
+        console.log(event.target.value);
+      }}></input>
       <button className="create-new-task-btn" onClick={createNewTask}>
         <SendIcon />
       </button>

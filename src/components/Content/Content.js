@@ -15,7 +15,7 @@ import ExitTaskDetail from "./Content-components/ExitTaskDetail";
 function TaskShow() {
   const currentTaskGroup = useSelector((state) => state.currentTaskGroup);
   let content;
-  if (currentTaskGroup.active) {
+  if (currentTaskGroup.active && currentTaskGroup.changeAble) {
     content = (
       <div className="task-show">
         <CurrentTaskGroupName />
@@ -24,7 +24,17 @@ function TaskShow() {
       </div>
     );
   } else {
-    content = <></>;
+    if(currentTaskGroup.active) {
+      content = (
+        <div className="task-show">
+          <CurrentTaskGroupName />
+          <CurrentTaskList />
+        </div>
+      );
+    } else {
+      content = <></>;
+    }
+    
   }
   return content;
 }

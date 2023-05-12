@@ -41,6 +41,7 @@ export const taskListSlice = createSlice({
           task.complete = action.payload.complete;
           task.important = action.payload.important;
           task.note = action.payload.note;
+          task.dueDate = action.payload.dueDate;
         }
       }
     },

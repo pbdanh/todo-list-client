@@ -39,7 +39,7 @@ export default function ShowTaskGroup() {
     let taskGroup = {
       name: name,
       id: id,
-      changeName: true,
+      changeAble: true,
       active: false,
     };
     dispatch(setCurrentTaskGroup(taskGroup));
@@ -76,9 +76,59 @@ export default function ShowTaskGroup() {
     }
   }
 
+
+  function getImportantTask() {
+    let taskGroup = {
+      name: "Important",
+      id: 0,
+      changeAble: false,
+      active: true,
+    };
+    dispatch(setCurrentTaskGroup(taskGroup));
+
+    
+    axios.get("http://localhost:8080/api/importantTasks", {
+      headers: {
+        Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+      }
+    }).then((res) => {
+      dispatch(SetTaskList(res.data));
+    });
+  }
+
+  function getDueTodayTasks() {
+    let taskGroup = {
+      name: "Due today",
+      id: 0,
+      changeAble: false,
+      active: true,
+    };
+    dispatch(setCurrentTaskGroup(taskGroup));
+
+    
+    axios.get("http://localhost:8080/api/dueTodayTasks", {
+      headers: {
+        Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+      }
+    }).then((res) => {
+      dispatch(SetTaskList(res.data));
+    });
+  }
+
+
   return (
     <div className="task-group-holder">
       <ul>
+      <div className="task-with-icon">
+      <li onClick={getImportantTask}>⭐ Important</li>
+      </div>
+      <div className="task-with-icon">
+      <li onClick={getDueTodayTasks}>💀 Due today</li>
+      </div>
+
+      <div className="line"></div>
+      
+        
         {taskGroupList.taskGroup.map((taskList) => (
           <div className="task-with-icon">
             <li

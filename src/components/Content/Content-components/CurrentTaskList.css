@@ -38,7 +38,7 @@
   backdrop-filter: blur(20px);
   border: 0.5px solid rgba(255, 255, 255, 0.5);
   border-radius: 9px;
-  height: 55px;
+  height: 60px;
   margin: 15px 60px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
@@ -49,7 +49,7 @@
 }
 
 .todo-list-li li {
-  padding-left: 17px;
+  /* padding-left: 17px; */
   list-style: none;
   width: 100%;
   margin: 10px;
@@ -72,4 +72,28 @@
 
 .star-icon {
   margin-right: 8px;
+}
+
+.task-and-duedate {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+}
+
+.task-and-duedate li {
+  /* padding-top: 35px; */
+}
+
+.task-and-duedate p {
+  font-size: 14px;
+  padding: 0px;
+  margin: 0px;
+  padding-left: 15px;
+  padding-bottom: 5px;
+}
+
+.task-with-due-date {
+  margin: 0px;
+  padding: 0px;
 }

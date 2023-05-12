@@ -17,6 +17,12 @@
   flex-grow: 1;
 }
 
+.date-select {
+  max-width: 100px;
+  /* flex-grow: 0; */
+  border: none;
+}
+
 .add-a-new-task input:focus {
   outline: none;
 }

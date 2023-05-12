@@ -10,15 +10,34 @@
   background-color: transparent;
   width: 98%;
   /* padding: 10px; */
-  border: 1px solid rgba(255,255,255,0.5);
+  border: 1px solid rgba(0,0,0,0.2);
   border-radius: 5px;
   font-size: 16px;
   /* margin-left: 10px ; */
   /* margin-right: 10px ; */
+  padding: 10px;
 }
 
 .add-note:focus {
   outline: none;
   /* border-color: #3f51b5; */
   box-shadow: 0 0 3px rgba(63, 81, 181, 0.5);
+}
+
+.due-date {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.select-date {
+  max-height: 30px;
+  border: none;
+  max-width: 100px;
+}
+
+.select-date:focus {
+  border: none;
+  outline: none;
 }

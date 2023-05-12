@@ -16,12 +16,14 @@ export const currentTaskSlice = createSlice({
   initialState,
   reducers: {
     setCurrentTask: (state, action) => {
+      console.log(action.payload.dueDate);
       state.id = action.payload.id;
       state.title = action.payload.title;
       state.note = action.payload.note;
       state.taskGroupId = action.payload.taskGroupId;
       state.complete = action.payload.complete;
       state.important = action.payload.important;
+      state.dueDate = action.payload.dueDate;
       state.active = true;
     },
     inactiveCurrentTask: (state) => {

@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   id: 0,
   name: "",
-  changeName: false,
+  changeAble: true,
   active: false,
 };
 
@@ -14,7 +14,7 @@ export const currentTaskGroupSlice = createSlice({
     setCurrentTaskGroup: (state, action) => {
       state.id = action.payload.id;
       state.name = action.payload.name;
-      state.changeName = action.payload.changeName;
+      state.changeAble = action.payload.changeAble;
       state.active = true;
     },
     inactiveCurrentTaskGroup: (state) => {

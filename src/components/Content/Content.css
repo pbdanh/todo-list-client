@@ -96,6 +96,11 @@
   flex-direction: column;
 }
 
+.note {
+  height: 50%;
+  width: 95%;
+}
+
 
 
 

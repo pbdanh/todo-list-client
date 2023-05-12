@@ -1,14 +1,14 @@
 .current-task-name {
   display: flex;
   align-items: center;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
   margin-top: 7px;
   font-size: 50px;
   /* background-color: red; */
-  border: 1px solid rgba(255,255,255,0.5);
-  border-radius: 3px;
+  border-bottom: 1px solid rgba(0,0,0,0.5);
+  /* border-radius: 10px; */
   width: 87%;
-  background-color: rgba(255,255,255,0.3);
+  /* background-color: rgba(255,255,255,0.3); */
 }
 
 .is-complete,
@@ -58,4 +58,8 @@
 .is-important button svg {
   width: 30px;
   height: 30px;
+}
+
+.task-and-duedate {
+  flex-grow: 1;
 }
